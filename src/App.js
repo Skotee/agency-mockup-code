@@ -1,10 +1,9 @@
-import './App.css';
-import Home from './pages/Home';
+import React from "react";
+import "./App.css";
+import { Homepage } from "./containers/homepage";
 
-const App = () => {
-  return (
-    <Home/>
-  );
+function App(props) {
+  return <Homepage />;
 }
 
 export default App;
