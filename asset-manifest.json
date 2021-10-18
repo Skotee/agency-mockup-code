@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/agency-mockup-code/static/css/main.bf7bc477.chunk.css",
+    "main.js": "/agency-mockup-code/static/js/main.182d67eb.chunk.js",
+    "main.js.map": "/agency-mockup-code/static/js/main.182d67eb.chunk.js.map",
+    "runtime-main.js": "/agency-mockup-code/static/js/runtime-main.7fa48b29.js",
+    "runtime-main.js.map": "/agency-mockup-code/static/js/runtime-main.7fa48b29.js.map",
+    "static/js/2.e3370597.chunk.js": "/agency-mockup-code/static/js/2.e3370597.chunk.js",
+    "static/js/2.e3370597.chunk.js.map": "/agency-mockup-code/static/js/2.e3370597.chunk.js.map",
+    "index.html": "/agency-mockup-code/index.html",
+    "static/css/main.bf7bc477.chunk.css.map": "/agency-mockup-code/static/css/main.bf7bc477.chunk.css.map",
+    "static/js/2.e3370597.chunk.js.LICENSE.txt": "/agency-mockup-code/static/js/2.e3370597.chunk.js.LICENSE.txt",
+    "static/media/background1circles.9caba059.png": "/agency-mockup-code/static/media/background1circles.9caba059.png",
+    "static/media/background2eye.cb796cb4.png": "/agency-mockup-code/static/media/background2eye.cb796cb4.png",
+    "static/media/background3eyebrow3.4ae9a9f0.png": "/agency-mockup-code/static/media/background3eyebrow3.4ae9a9f0.png",
+    "static/media/background4mouth4.e6f418aa.png": "/agency-mockup-code/static/media/background4mouth4.e6f418aa.png",
+    "static/media/charts1.f2a5b331.png": "/agency-mockup-code/static/media/charts1.f2a5b331.png",
+    "static/media/earners2.a86a7435.png": "/agency-mockup-code/static/media/earners2.a86a7435.png",
+    "static/media/eth3.dfbf30b0.png": "/agency-mockup-code/static/media/eth3.dfbf30b0.png",
+    "static/media/profile12.2f529b0c.png": "/agency-mockup-code/static/media/profile12.2f529b0c.png",
+    "static/media/profile21.f9fd7a7c.png": "/agency-mockup-code/static/media/profile21.f9fd7a7c.png",
+    "static/media/rank4.faedfed5.png": "/agency-mockup-code/static/media/rank4.faedfed5.png",
+    "static/media/rankproj1.844fcce9.png": "/agency-mockup-code/static/media/rankproj1.844fcce9.png",
+    "static/media/slack4.397365c2.png": "/agency-mockup-code/static/media/slack4.397365c2.png",
+    "static/media/stacked3.588dcd6f.png": "/agency-mockup-code/static/media/stacked3.588dcd6f.png",
+    "static/media/stats2.8d12d198.png": "/agency-mockup-code/static/media/stats2.8d12d198.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7fa48b29.js",
+    "static/js/2.e3370597.chunk.js",
+    "static/css/main.bf7bc477.chunk.css",
+    "static/js/main.182d67eb.chunk.js"
+  ]
+}
