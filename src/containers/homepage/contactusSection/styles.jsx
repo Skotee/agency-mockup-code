@@ -1,11 +1,8 @@
-import React from "react";
-import { Element } from "react-scroll";
 import styled from "styled-components";
+import {Element} from "react-scroll";
 
-import CountactUs from "../../components/contactUs";
-import { Marginer } from "../../components/marginer";
-import background4mouth from "../../assets/background4mouth4.png";
-import { SectionTitle } from "../../components/sectionTitle";
+import background4mouth from "../../../assets/background4mouth4.png";
+import {SectionTitle} from "../../../components/sectionTitle";
 
 const ContactUsContainer = styled(Element)`
   width: 100%;
@@ -14,11 +11,7 @@ const ContactUsContainer = styled(Element)`
   flex-direction: column;
   align-items: center;
   padding: 10px 0;
-  background:
-    url(${background4mouth})    /* image */
-    no-repeat                /* repeat */          
-    padding-box              /* origin */
-    content-box;              /* clip */    
+  background: url(${background4mouth}) no-repeat padding-box content-box;
   background-position: -25vw 10vw;
   background-size: 150%;
 
@@ -52,12 +45,4 @@ const WhiteSectionTitle = styled(SectionTitle)`
   color: white;
 `;
 
-export function ContactUsSection() {
-  return (
-    <ContactUsContainer name="contactusSection">
-      <Marginer direction="vertical" margin="12em" />
-      <WhiteSectionTitle>Contact Us</WhiteSectionTitle>
-      <CountactUs/>
-    </ContactUsContainer>
-  );
-}
+export {ContactUsContainer, WhiteSectionTitle};

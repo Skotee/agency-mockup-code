@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Button } from "../../components/button";
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -7,9 +6,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useForm, Controller } from 'react-hook-form';
-import styled from "styled-components";
-import { Element } from "react-scroll";
-import { theme } from "../../theme";
+
+import * as Styled from "./styles";
 
 export default function SignInDialog({
   onClose: handleClose,
@@ -23,37 +21,6 @@ export default function SignInDialog({
     alert("Zapisano dane do cookies, dane logowania zostały wyświetlone w konsoli")
   }
 
-  const GridRow = styled(Element)`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-  `;
-
-const StyledButton = styled(Button)`
-  padding: ${({ small }) => (small ? "5px 8px" : "13px 36px;")};
-  border-radius: 40px;
-  background-color: ${theme.primary};
-  color: white;
-  font-weight: bold;
-  font-size: ${({ small }) => (small ? "12px" : "16px")};
-  outline: none;
-  border: 2px solid white;
-  transition: all 220ms ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-    color: ${theme.secondary};
-    background-color: #fff;
-    border: 2px solid ${theme.secondary};
-  }
-`;
-
-
-const StyledTextField = styled(TextField)`
-  background-color: white;
-`;
-
   return (
     <Dialog 
       open={open} 
@@ -66,7 +33,7 @@ const StyledTextField = styled(TextField)`
         </DialogContentText>
         <br/>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <GridRow>
+            <Styled.GridRow>
               <Controller
                 name="email"
                 control={control}
@@ -89,7 +56,7 @@ const StyledTextField = styled(TextField)`
                 control={control}
                 defaultValue=""
                 render={({ field: { onChange, value }, fieldState: { error } }) => (
-                  <StyledTextField
+                  <Styled.StyledTextField
                     label="Password"
                     variant="outlined"
                     value={value}
@@ -101,15 +68,15 @@ const StyledTextField = styled(TextField)`
                 )}
                 rules={{ required: 'Password required' }}
               />
-            </GridRow>
+            </Styled.GridRow>
           <br/>
           <DialogActions>
-            <StyledButton variant="contained" onClick={handleClose}>
+            <Styled.StyledButton variant="contained" onClick={handleClose}>
               Cancel
-            </StyledButton>
-            <StyledButton type="submit" variant="contained" color="primary">
+            </Styled.StyledButton>
+            <Styled.StyledButton type="submit" variant="contained" color="primary">
               Sign in
-            </StyledButton>
+            </Styled.StyledButton>
           </DialogActions>
       </form>
       </DialogContent>

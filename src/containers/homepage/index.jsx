@@ -1,9 +1,9 @@
 import React from "react";
 
-import { TopSection } from "./topSection";
-import { ReviewsSection } from "./reviewsSection";
-import { ServicesSection } from "./servicesSection";
-import { ContactUsSection } from "../homepage/contactusSection";
+import {TopSection} from "./topSection/topSection";
+import {ReviewsSection} from "./reviewsSection/reviewsSection";
+import {ServicesSection} from "./servicesSection/servicesSection";
+import {ContactUsSection} from "./contactusSection/contactusSection";
 
 export function Homepage() {
   return (

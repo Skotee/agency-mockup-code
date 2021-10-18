@@ -1,38 +1,14 @@
 import React from "react";
-import styled from "styled-components";
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
-import { theme } from "../../theme";
-
-const ArrowContainer = styled.div`
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background-color: rgba(113, 113, 113, 0.48);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid transparent;
-  transition: all 250ms ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-    border: 2px solid ${theme.primary};
-  }
-`;
-
-const ArrowIcon = styled.div`
-  margin-top: 3px;
-  color: #fff;
-  font-size: 29px;
-`;
+import * as Styled from "./styles";
 
 export function DownArrow() {
   return (
-    <ArrowContainer>
-      <ArrowIcon>
+    <Styled.ArrowContainer>
+      <Styled.ArrowIcon>
         <ArrowDownwardIcon />
-      </ArrowIcon>
-    </ArrowContainer>
+      </Styled.ArrowIcon>
+    </Styled.ArrowContainer>
   );
 }
