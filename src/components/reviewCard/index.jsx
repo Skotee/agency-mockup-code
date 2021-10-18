@@ -1,42 +1,42 @@
-// import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
+import Rating from '@mui/material/Rating';
+
 import { Marginer } from "../marginer";
+import { Element } from "react-scroll";
+import { theme } from "../../theme";
 
 const CardContainer = styled.div`
   width: 350px;
-  height: 430px;
+  height: 288px;
   background-color: #fff;
-  box-shadow: 0px 0px 7px rgba(17, 17, 17, 0.2);
+  box-shadow: 0px 50px 99px #1F485D1A;
   border-radius: 3px;
-  margin: 5px 0;
   position: relative;
+  margin: 25px;
+
+  &:hover {
+    transition-duration: 1s;
+    transform: scale(1.15);
+  }
+`;
+
+const InnerContainer = styled.div`
   padding: 10px 1.2em;
 `;
 
-const QuoteIcon = styled.div`
-  position: absolute;
-  top: 13px;
-  left: 17px;
-  color: #d1d1d1;
-  font-size: 37px;
+const UserInnerContainer = styled(Element)`
+  display: flex;
+  flex-direction: column;
+  line-height: 28px;
 `;
 
 const ReviewText = styled.p`
   font-size: 17px;
-  color: #585858;
+  color: #B1AAAA;
   font-weight: normal;
   display: flex;
   justify-content: center;
-`;
-
-const Line = styled.span`
-  min-width: 100%;
-  min-height: 1px;
-  margin-bottom: 1em;
-  background-color: #cdcdcd;
-  display: flex;
 `;
 
 const UserDetails = styled.div`
@@ -45,33 +45,56 @@ const UserDetails = styled.div`
 `;
 
 const UserImg = styled.img`
-  width: 45px;
-  height: 45px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 19px;
 `;
 
-const Username = styled.span`
-  font-size: 15px;
-  color: #000;
+const UserDescription = styled.span`
+  font-size: 14px;
+  font-weight: 300;
+  color: #B1AAAA;
+`;
+
+const User = styled.span`
+  color: #1E1C24;
+  font-weight: bold;
+  font-size: 16px;
+`;
+
+const UserCompany = styled(User)`
+  font-size: 14px;
+`;
+
+const Line = styled.div`
+  position: absolute;
+  bottom: 0;
+  height: 7px;
+  background-color: ${theme.primary};
 `;
 
 export function ReviewCard(props) {
-  const { reviewText, username, userImgUrl } = props;
+  const { reviewText, username, userImgUrl, userPosition, userCompany, lineWidth } = props;
 
   return (
     <CardContainer>
-      <QuoteIcon>
-        {/* <FontAwesomeIcon icon={faQuoteLeft} /> */}
-      </QuoteIcon>
-      <Marginer direction="vertical" margin="6em" />
-      <ReviewText>{reviewText}</ReviewText>
-      <Marginer direction="vertical" margin="7em" />
-      <Line />
-      <UserDetails>
-        <UserImg src={userImgUrl} />
-        <Username>{username}</Username>
-      </UserDetails>
+      <InnerContainer>
+        <Rating name="read-only" value={5} readOnly />
+        <Marginer direction="vertical" margin="1em" />
+        <ReviewText>{reviewText}</ReviewText>
+        <Marginer direction="vertical" margin="1em" />
+        <UserDetails>
+          <UserImg src={userImgUrl} />
+          <UserInnerContainer>
+            <User>{username}</User>
+            <UserDescription>
+              {userPosition} at <UserCompany>{userCompany}</UserCompany>
+            </UserDescription>
+          </UserInnerContainer>
+        </UserDetails>
+      </InnerContainer>
+      <Line style={{width: `${lineWidth}`}}/>
     </CardContainer>
   );
 }

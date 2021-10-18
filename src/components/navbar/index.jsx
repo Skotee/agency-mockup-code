@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+
 import { Button } from "../../components/button";
-import { Logo } from "../logo";
 import { Marginer } from "../marginer";
+import Logo from "../../assets/logo3.png";
 
 const NavbarContainer = styled.div`
   width: 100%;
   height: 50px;
-  padding: 0 2em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,19 +21,31 @@ const AccessibilityContainer = styled.div`
 `;
 
 const LoginButton = styled(Button)`
-  border-radius: 20px;
+  border-radius: 40px;
 `;
 
 
-export function Navbar(props) {
+export function Navbar ({
+  onOpen: handleOpenDialog
+}) {
   return (
     <NavbarContainer>
       <BrandContainer>
-        <Logo inline />
+        <a href ="/">
+          <img src={Logo} alt='logo'/>
+        </a>
       </BrandContainer>
       <AccessibilityContainer>
-        <Marginer direction="horizontal" margin="8px" />
-        <LoginButton variant="outlined">Login</LoginButton>
+        <Marginer 
+          direction="horizontal" 
+          margin="8px" 
+        />
+        <LoginButton 
+          variant="outlined"
+          onClick={handleOpenDialog}
+        >
+          Login
+        </LoginButton>
       </AccessibilityContainer>
     </NavbarContainer>
   );

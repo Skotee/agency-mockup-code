@@ -1,103 +1,210 @@
-import React, { useState } from "react";
+import React from "react";
 import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import styled from "styled-components";
+import { Element } from "react-scroll";
+import { theme } from "../../theme";
 import { Button } from "../../components/button";
+import { useForm, Controller } from 'react-hook-form';
 
-function CountactUs() {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-  const [errorMessages, setErrorMessages] = useState([]);
-  const [showErrors, setShowErrors] = useState(false);
+const StyledTextField = styled(TextField)`
+  background-color: white;
+  width: 400px;
+  margin: 20px !important;
 
-  let errors = [];
-  function ValidateEmail(email) {
-    if (/^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      return true;
-    }
-    return false;
+  @media screen and (max-width: 480px) {
+    width: 300px;
+  }
+`;
+
+const GridColumn = styled(Element)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const GridRow = styled(Element)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+  }
+`;
+
+const CheckboxContainer = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+`;
+
+const StyledFormControlLabel = styled(FormControlLabel)`
+  color: white;
+`;
+
+const StyledButton = styled(Button)`
+  border-radius: 20px;
+  background-color: ${theme.secondary};
+  color: white;
+  font-weight: bold;
+  outline: none;
+  border: 2px solid ${theme.secondary};
+  transition: all 220ms ease-in-out;
+  cursor: pointer;
+  height: 70px;
+  width: 400px;
+  margin-right: 20px;
+
+  &:hover {
+    color: ${theme.secondary};
+    background-color: #fff;
+    border: 2px solid ${theme.secondary};
   }
 
-  const formValidation = () => {
-    setErrorMessages([]);
+  @media screen and (max-width: 900px) {
+    width: 400px;
+    margin: 0 auto;
+  }
 
-    const isNameValid = name !== "";
-    const isMessageValid = message !== "";
-    const isSubjectValid = subject !== "";
+  @media screen and (max-width: 480px) {
+    width: 300px;
+    margin: 0 auto;
+  }
+`;
 
-    if (!isNameValid) {
-      errors.push("Name is not valid, please try again.");
-    }
-    if (!ValidateEmail(email)) {
-      errors.push("Email is not valid, please try again.");
-    }
-    if (email === "") {
-      errors.push("Email field is empty, please try again.");
-    }
-    if (!isMessageValid) {
-      errors.push("Message is not valid, please try again.");
-    }
-    if (!isSubjectValid) {
-      errors.push("Subject is not valid, please try again.");
-    }
-    if (errors.length > 0) {
-      setShowErrors({ showErrors: true });
-      setErrorMessages(errors);
-    } else {
-      setShowErrors({ showErrors: false });
-      alert("Email Sent");
-    }
+function CountactUs() {
+  const [checked, setChecked] = React.useState([true, false]);
+  const { handleSubmit, control } = useForm();
+
+  const handleChange1 = (event) => {
+    setChecked([event.target.checked, event.target.checked]);
   };
 
+  const handleChange2 = (event) => {
+    setChecked([event.target.checked, checked[1]]);
+  };
+
+  const handleChange3 = (event) => {
+    setChecked([checked[0], event.target.checked]);
+  };
+
+  const onSubmit = data => {
+    document.cookie = data;
+    console.log(data);
+    alert("Zapisano dane do cookies, dane z formularza kontaktowego zostały wyświetlone w konsoli")
+  }
+
   return (
-    <div className="container">
-      <div className="outerFormContainer">
-        <div className="innerFormContainer">
-          <h2> Get in touch </h2>
-          <form>
-            <TextField
-              label="Your name"
-              type="text"
-              variant="outlined"
-              onChange={e => setName(e.target.value)}
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <GridRow>
+        <GridColumn>
+          <Controller
+            name="name"
+            control={control}
+            defaultValue=""
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <StyledTextField
+                label="your name"
+                type="text"
+                variant="outlined"
+                value={value}
+                error={!!error}
+                helperText={error ? error.message : null}
+                onChange={onChange}
+              />
+            )}
+            rules={{ required: 'Name required' }}
+          />
+          <Controller
+            name="email"
+            control={control}
+            defaultValue=""
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <StyledTextField
+                label="your email"
+                type="email"
+                variant="outlined"
+                value={value}
+                error={!!error}
+                helperText={error ? error.message : null}
+                onChange={onChange}
+              />
+            )}
+            rules={{ required: 'Email required' }}
             />
-            <TextField
-              label="Your email"
-              type="email"
-              variant="outlined"
-              onChange={e => setEmail(e.target.value)}
-            />
-            <TextField
-              label="Your company"
-              type="text"
-              variant="outlined"
-              onChange={e => setSubject(e.target.value)}
-            />
-            <TextField
-              label="Message"
+           <Controller
+              name="company"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <StyledTextField
+                label="your company"
+                type="text"
+                variant="outlined"
+                value={value}
+                error={!!error}
+                helperText={error ? error.message : null}
+                onChange={onChange}
+              />
+            )}
+              rules={{ required: 'Company required' }}
+          />
+        </GridColumn>
+        <GridColumn>
+        <Controller
+          name="message"
+          control={control}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <StyledTextField
+              label="message"
               type="text"
               variant="outlined"
               multiline
-              rowsMax="3"
-              onChange={e => setMessage(e.target.value)}
+              rows={10}
+              maxRows={10}
+              error={!!error}
+              helperText={error ? error.message : null}
+              value={value}
+              onChange={onChange}
             />
-            {showErrors
-              ? errorMessages.map((item, index) => {
-                  return <ul key={index}>{item}</ul>;
-                })
-              : null}
-            <Button
-              variant="contained"
-              color="primary"
-              type="button"
-              onClick={formValidation}
-            >
-              Submit
-            </Button>
-          </form>
-        </div>
-      </div>
-    </div>
+            )}
+            rules={{ required: 'Message required' }}
+          />
+        </GridColumn>
+      </GridRow>
+      <GridRow>
+        <CheckboxContainer>
+          <StyledFormControlLabel
+            label="Accept all"
+            control={
+              <Checkbox
+                checked={checked[0] && checked[1]}
+                onChange={handleChange1}
+              />
+            }
+          />
+          <StyledFormControlLabel
+            label="I agree to the processing my data"
+            control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
+          />
+          <StyledFormControlLabel
+            label="RODO processing my data by company"
+            control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
+          />
+        </CheckboxContainer>
+        <StyledButton
+          color="primary"
+          type="submit"
+        >
+          Request a demo
+        </StyledButton>
+      </GridRow>
+    </form>
   );
 }
 export default CountactUs;

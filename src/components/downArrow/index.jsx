@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
+
 import { theme } from "../../theme";
 
 const ArrowContainer = styled.div`
@@ -29,7 +31,7 @@ export function DownArrow() {
   return (
     <ArrowContainer>
       <ArrowIcon>
-        {/* <FontAwesomeIcon icon={faAngleDown} /> */}
+        <ArrowDownwardIcon />
       </ArrowIcon>
     </ArrowContainer>
   );

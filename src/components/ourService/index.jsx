@@ -1,71 +1,83 @@
+
 import React from "react";
 import styled from "styled-components/macro";
+import { Typography } from '@mui/material';
+
+import Arrow from "../../assets/arrow.png";
 
 const ServiceContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: ${({ isReversed }) => isReversed && "row-reverse"};
   margin-bottom: 4em;
-  flex-wrap: wrap-reverse;
+  width: 50vw;
+
+  @media screen and (max-width: 800px) {
+    width: 90vw;
+  }
 
   @media screen and (max-width: 480px) {
     justify-content: center;
   }
 `;
 
-const ServiceImg = styled.img`
-  width: 22em;
-  height: 17em;
-
-  @media screen and (max-width: 480px) {
-    width: 18em;
-    height: 13em;
-  }
-`;
-
-const DescriptionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 60%;
-
-  @media screen and (max-width: 480px) {
-    max-width: 100%;
-  }
-`;
-
 const Title = styled.h2`
   color: #000;
-  font-size: 28px;
+  font-size: 50px;
   font-weight: 700;
   margin: 5px 0;
+  width: 500px;
+  line-height: 1.2;
+
+  @media screen and (max-width: 800px) {
+    font-size: 40px;
+    width: 340px;
+  }
 
   @media screen and (max-width: 480px) {
+    font-size: 30px;
     margin-top: 1.5em;
+    width: 300px;
   }
 `;
 
 const Details = styled.p`
-  color: #7a7a7a;
+  color: #B1AAAA;
   font-size: 21px;
-  text-align: center;
-  max-width: 55%;
+  text-align: left;
+  max-width: 77%;
 
   @media screen and (max-width: 480px) {
+    font-size: 15px;
     width: 100%;
   }
 `;
 
-export function OurSerivce(props) {
-  const { imgUrl, title, description, isReversed } = props;
+const Link = styled.a`
+  text-transform: uppercase;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #000;
+`;
+
+export function OurService(props) {
+  const { title, description, isReversed } = props;
 
   return (
     <ServiceContainer isReversed={isReversed}>
-      <DescriptionContainer>
+      <div>
         <Title>{title}</Title>
         <Details>{description}</Details>
-      </DescriptionContainer>
-      <ServiceImg src={imgUrl} />
+        <div>   
+          <Link href ="/">   
+              Learn More
+          </Link>
+            <span>
+              <img src={Arrow} alt='Learn more'/>  
+            </span>   
+
+        </div>
+      </div>
     </ServiceContainer>
   );
 }

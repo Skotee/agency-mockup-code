@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 
 const ButtonWrapper = styled.button`
-  padding: ${({ small }) => (small ? "5px 8px" : "7px 15px")};
+  padding: ${({ small }) => (small ? "5px 8px" : "13px 36px;")};
   border-radius: 20px;
   background-color: transparent;
   color: #fff;
